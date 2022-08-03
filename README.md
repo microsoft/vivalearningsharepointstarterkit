@@ -2,9 +2,10 @@
 
 [Visão Geral](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/) | [Arquitetura](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/1.-Arquitetura) | [Guia de instalação](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/2.-Guia-de-Instala%C3%A7%C3%A3o) | [Usando a solução](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/3.-Usando-a-Solu%C3%A7%C3%A3o)
 
-Bem-vindo ao Viva Learning SharePoint Starter Kit. Ele é um conjunto de modelos projetados para ajudar a desenvolver uma estratégia de adoção para o Viva Learning. O Kit inclui um modelo de site do SharePoint Online para ser compartilhado com os usuários, bem como um aplicativo desenvolvido usando a Power Platform que também necessita ser compartilhado.
+O Viva Learning SharePoint Starter Kit é um aplicativo customizado desenvolvido usando a Power Platform juntamente com um modelo de site de SharePoint que permite aos colaboradores da organização aos quais você compartilhou utilizarem o recurso sugerirem seus próprios conteúdos de treinamento com a finalidade de agregar valor à organização, compartilhar conhecimento e integrar as áreas.
 
-O Viva Learning SharePoint Starter Kit é um conjunto de ativos que fazem parte da solução e devem ser vistos como um modelo do qual você pode usar a sua solução da maneira que foi concebida ou usar de inspiração para implementar à sua maneira, alterando tanto o modo de operação da aplicação, quanto fluxos ou mesmo o site.
+O Viva Learning SharePoint Starter Kit após o usuário sugerir um conteúdo este por sua vez é enviado para os administradores de conteúdo da organização via Microsoft Teams, os aprovadores de conteúdo tomam a decisão de aprovar ou rejeitar o conteúdo de acordo com seus próprios critérios.
+Caso o conteúdo for aprovado, ele passar a ser publicado dentro da biblioteca de catálogo da organização, sendo ela indexada pelo Viva Learning, e o conteúdo estando disponível a organização após 24 horas através do Viva Learning.
 
 ### About this GitHub repo
 
