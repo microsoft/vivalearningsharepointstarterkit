@@ -1,14 +1,10 @@
-# Project
+# Viva Learning SharePoint Starter Kit
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+[Visão Geral](https://github.com/douglasanunciacao/vivalearningsharepointstarterkit/blob/main/Deployment/Wiki/Solution%20Overview.md) | [Arquitetura](https://github.com/douglasanunciacao/vivalearningsharepointstarterkit/blob/main/Deployment/Wiki/Architecture.md) | [Guia de instalação](https://github.com/douglasanunciacao/vivalearningsharepointstarterkit/blob/main/Deployment/Wiki/Deployment%20Guide.md) | [Usando a solução](https://github.com/douglasanunciacao/vivalearningsharepointstarterkit/blob/main/Deployment/Wiki/How%20to%20Use.md)
 
-As the maintainer of this project, please make a few updates:
+Bem-vindo ao Viva Learning SharePoint Starter Kit. Ele é um conjunto de modelos projetados para ajudar a desenvolver uma estratégia de adoção para o Viva Learning. O Kit inclui um modelo de site do SharePoint Online para ser compartilhado com os usuários, bem como um aplicativo desenvolvido usando a Power Platform que também necessita ser compartilhado.
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+O Viva Learning SharePoint Starter Kit é um conjunto de ativos que fazem parte da solução e devem ser vistos como um modelo do qual você pode usar a sua solução da maneira que foi concebida ou usar de inspiração para implementar à sua maneira, alterando tanto o modo de operação da aplicação, quanto fluxos ou mesmo o site.
 
 ## Contributing
 
