@@ -6,6 +6,10 @@ Bem-vindo ao Viva Learning SharePoint Starter Kit. Ele é um conjunto de modelos
 
 O Viva Learning SharePoint Starter Kit é um conjunto de ativos que fazem parte da solução e devem ser vistos como um modelo do qual você pode usar a sua solução da maneira que foi concebida ou usar de inspiração para implementar à sua maneira, alterando tanto o modo de operação da aplicação, quanto fluxos ou mesmo o site.
 
+# About this GitHub repo
+
+The Viva Learning SharePoint Starter Kit GitHub Repo contains the source, issues and backlog items of all components that are part of the solution.
+
 ### Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
