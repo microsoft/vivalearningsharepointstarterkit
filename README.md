@@ -29,13 +29,19 @@ Quando você estiver confortável para realizar a implementação do Viva Learni
 
 - **[Aprenda a usar a solução com o guia de uso](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/3.-Usando-a-Solu%C3%A7%C3%A3o)**
 
+Aproveitem essa solução de controle de conteúdo do catálogo do Viva Learning proveniente de bibliotecas do SharePoint.
+
+Essa é uma solução modelo, e pode ser adaptada conforme a necessidade da organização, seu código não está bloqueado ou mesmo criptografado.
+
+Caso queira conhecer mais sobre o Viva Learning acesse: https://www.microsoft.com/microsoft-viva
+
 # Aviso legal
 
-### Sobre este repositório do GitHub
+## Sobre este repositório do GitHub
 
 O repositório do GitHub do Viva Learning SharePoint Starter Kit contém a origem, os problemas e os itens de backlog de todos os componentes que fazem parte da solução.
 
-### Contribuindo
+## Contribuindo
 
 Este projeto aceita contribuições e sugestões. A maioria das contribuições exige que você concorde com um "Contributor License Agreement (CLA)" declarando que você tem o direito de, e realmente tem, de nos conceder os direitos de usar sua contribuição. Para detalhes, visite https://cla.opensource.microsoft.com.
 
@@ -45,6 +51,6 @@ Este projeto adotou o [Microsoft Open Source Code of Conduct](https://opensource
 Para obter maiores informações, consulte o [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) ou
 entre em contato com [opencode@microsoft.com](mailto:opencode@microsoft.com) com quaisquer perguntas ou comentários adicionais.
 
-### Marcas registradas
+## Marcas registradas
 
 Este projeto pode conter marcas registradas ou logotipos de projetos, produtos ou serviços. Uso autorizado da Microsoft macas e/ou logotipos estão sujeitos e devem seguir [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general). O uso de marcas registradas e/ou logotipos da Microsoft em versões modficadas deste projeto não deve causar confusão ou implicar patrocínio da Microsoft. Qualquer uso de marcas e/ou logotipos de terceiros está sujeito a políticas desses terceiros.
