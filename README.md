@@ -17,6 +17,18 @@ O Viva Learning SharePoint Starter Kit provê a aprovação do conteúdo antes d
 
 - **Publicação da biblioteca:** após a aprovação a solução se encarrega de realizar a publicação dentro da biblioteca de conteúdo do SharePoint mapeada com o Viva Learning.
 
+## Iniciando
+
+Comece lendo a **[Visão Geral](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/)** da solução para saber mais do que a solução não faz.
+
+Quando você estiver confortável para realizar a implementação do Viva Learning SharePoint Starter Kit em sua organização, você deve seguir os passos abaixo:
+
+- **[Conheça um pouco da arquitetura](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/1.-Arquitetura)**
+
+- **[Siga as etapas do guia de instalação](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/2.-Guia-de-Instala%C3%A7%C3%A3o)**
+
+- **[Aprenda a usar a solução com o guia de uso](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/3.-Usando-a-Solu%C3%A7%C3%A3o)**
+
 ### About this GitHub repo
 
 The Viva Learning SharePoint Starter Kit GitHub Repo contains the source, issues and backlog items of all components that are part of the solution.
