@@ -37,13 +37,11 @@ O repositório do GitHub do Viva Learning SharePoint Starter Kit contém a orige
 
 Este projeto aceita contribuições e sugestões. A maioria das contribuições exige que você concorde com um "Contributor License Agreement (CLA)" declarando que você tem o direito de, e realmente tem, de nos conceder os direitos de usar sua contribuição. Para detalhes, visite https://cla.opensource.microsoft.com.
 
-When you submit a pull request, a CLA bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
+Quando você enviar uma solicitação, um bot CLA determinará automaticamente se você precisa fornecer um CLA e um PR adequadamente (por exemplo, verificação de status, comentário). Basta seguir as instruções fornecidas pelo Bot. Você só precisará fazer isso uma vez em todos os repositórios usando nosso CLA.
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+Este projeto adotou o [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+Para obter maiores informações, consulte o [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) ou
+entre em contato com [opencode@microsoft.com](mailto:opencode@microsoft.com) com quaisquer perguntas ou comentários adicionais.
 
 ### Trademarks
 
