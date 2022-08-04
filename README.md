@@ -2,10 +2,12 @@
 
 [Visão Geral](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/) | [Arquitetura](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/1.-Arquitetura) | [Guia de instalação](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/2.-Guia-de-Instala%C3%A7%C3%A3o) | [Usando a solução](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/3.-Usando-a-Solu%C3%A7%C3%A3o)
 
-O Viva Learning SharePoint Starter Kit é um aplicativo customizado desenvolvido usando a Power Platform juntamente com um modelo de site de SharePoint que permite aos colaboradores da organização aos quais você compartilhou utilizarem o recurso sugerirem seus próprios conteúdos de treinamento com a finalidade de agregar valor à organização, compartilhar conhecimento e integrar as áreas.
+O Viva Learning SharePoint Starter Kit é um aplicativo customizado desenvolvido usando a Power Platform juntamente com um modelo de site de SharePoint permitindo aos colaboradores da organização sugerirem seus próprios conteúdos de treinamento com a finalidade de agregar valor à organização, adotar o Viva Learning com conteúdo baseado em SharePoint, compartilhar conhecimento e integrar as áreas.
 
-O Viva Learning SharePoint Starter Kit após o usuário sugerir um conteúdo este por sua vez é enviado para os administradores de conteúdo da organização via Microsoft Teams, os aprovadores de conteúdo tomam a decisão de aprovar ou rejeitar o conteúdo de acordo com seus próprios critérios.
-Caso o conteúdo for aprovado, ele passar a ser publicado dentro da biblioteca de catálogo da organização, sendo ela indexada pelo Viva Learning, e o conteúdo estando disponível a organização após 24 horas através do Viva Learning.
+A aplicativo fornece uma interface simples para organizar os conteúdos do Viva Learning provenientes do SharePoint.
+O Viva Learning SharePoint Starter Kit provê a aprovação do conteúdo antes de ser publicado dentro da biblioteca de catálogo da organização, posteriormente estando disponível no Viva Learning.
+
+Imagem
 
 ### About this GitHub repo
 
