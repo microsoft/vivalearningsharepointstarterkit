@@ -33,7 +33,7 @@ Aproveitem essa solução de controle de conteúdo do catálogo do Viva Learning
 
 Essa é uma solução modelo, e pode ser adaptada conforme a necessidade da organização, seu código não está bloqueado ou mesmo criptografado.
 
-Caso queira conhecer mais sobre o Viva Learning acesse: https://www.microsoft.com/microsoft-viva
+Caso queira conhecer mais sobre o Microsoft Viva acesse: https://www.microsoft.com/microsoft-viva
 
 # Aviso legal
 
