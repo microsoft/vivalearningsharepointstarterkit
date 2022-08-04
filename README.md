@@ -7,7 +7,7 @@ O Viva Learning SharePoint Starter Kit é um aplicativo customizado desenvolvido
 A aplicativo fornece uma interface simples para organizar os conteúdos do Viva Learning provenientes do SharePoint.
 O Viva Learning SharePoint Starter Kit provê a aprovação do conteúdo antes de ser publicado dentro da biblioteca de catálogo da organização, posteriormente estando disponível no Viva Learning.
 
-(./vivalearningsharepointstarterkit/blob/main/deployment/assets/images/userInterface-01.png)
+([./vivalearningsharepointstarterkit/blob/main/deployment/assets/images/userInterface-01.png](https://github.com/microsoft/vivalearningsharepointstarterkit/blob/main/deployment/assets/images/userInterface-01.png))
 
 ### About this GitHub repo
 
