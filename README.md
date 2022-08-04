@@ -15,7 +15,7 @@ O Viva Learning SharePoint Starter Kit provê a aprovação do conteúdo antes d
 
 - **Aprovação de conteúdo:** os administradores de conteúdo da organização recebem as comunicações dos conteúdos que existem para serem aprovados, analisam aprovam ou rejeitam de acordo com a política de cada organização.
 
-- **Publicação da biblioteca:** após a aprovação a solução se encarrega de realizar a publicação dentro da biblioteca de conteúdo do SharePoint mapeada com o Viva Learning.
+- **Publicação na biblioteca:** após a aprovação a solução se encarrega de realizar a publicação dentro da biblioteca de conteúdo do SharePoint mapeada com o Viva Learning.
 
 ## Iniciando
 
@@ -29,15 +29,13 @@ Quando você estiver confortável para realizar a implementação do Viva Learni
 
 - **[Aprenda a usar a solução com o guia de uso](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/3.-Usando-a-Solu%C3%A7%C3%A3o)**
 
-### About this GitHub repo
+### Sobre este repositório do GitHub
 
-The Viva Learning SharePoint Starter Kit GitHub Repo contains the source, issues and backlog items of all components that are part of the solution.
+O repositório do GitHub do Viva Learning SharePoint Starter Kit contém a origem, os problemas e os itens de backlog de todos os componentes que fazem parte da solução.
 
-### Contributing
+### Contribuindo
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
+Este projeto aceita contribuições e sugestões. A maioria das contribuições exige que você concorde com um "Contributor License Agreement (CLA)" declarando que você tem o direito de, e realmente tem, de nos conceder os direitos de usar sua contribuição. Para detalhes, visite https://cla.opensource.microsoft.com.
 
 When you submit a pull request, a CLA bot will automatically determine whether you need to provide
 a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
