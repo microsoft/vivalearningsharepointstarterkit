@@ -29,6 +29,8 @@ Quando você estiver confortável para realizar a implementação do Viva Learni
 
 - **[Aprenda a usar a solução com o guia de uso](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/3.-Usando-a-Solu%C3%A7%C3%A3o)**
 
+# Aviso legal
+
 ### Sobre este repositório do GitHub
 
 O repositório do GitHub do Viva Learning SharePoint Starter Kit contém a origem, os problemas e os itens de backlog de todos os componentes que fazem parte da solução.
@@ -43,10 +45,6 @@ Este projeto adotou o [Microsoft Open Source Code of Conduct](https://opensource
 Para obter maiores informações, consulte o [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) ou
 entre em contato com [opencode@microsoft.com](mailto:opencode@microsoft.com) com quaisquer perguntas ou comentários adicionais.
 
-### Trademarks
+### Marcas registradas
 
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
-trademarks or logos is subject to and must follow 
-[Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
-Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
-Any use of third-party trademarks or logos are subject to those third-party's policies.
+Este projeto pode conter marcas registradas ou logotipos de projetos, produtos ou serviços. Uso autorizado da Microsoft macas e/ou logotipos estão sujeitos e devem seguir [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general). O uso de marcas registradas e/ou logotipos da Microsoft em versões modficadas deste projeto não deve causar confusão ou implicar patrocínio da Microsoft. Qualquer uso de marcas e/ou logotipos de terceiros está sujeito a políticas desses terceiros.
