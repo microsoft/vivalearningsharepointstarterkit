@@ -41,10 +41,14 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
     try {
     
     #Criação de Site - Certifique-se de antes executar o campo SiteUrl não contenha espaço ou caracteres especiais
+    Write-host "Criando o site $($SiteURL) ..." -ForeGroundColor Yellow
+
     New-PnPTenantSite -Title "Descubra, compartilhe e priorize o aprendizado" -Url $SiteURL -Lcid 1046 -TimeZone 8 -Template "SITEPAGEPUBLISHING#0" -Owner $Owner -Wait -Connection $adminconn -ErrorAction Stop
     
     $currentsite = $SiteURL
     $currentSiteConn = Connect-PnPOnline $currentsite -Interactive -ReturnConnection
+
+    Write-host "Aplicando o modelo de site..." -ForeGroundColor Yellow
     Start-Sleep -Seconds 60
     Invoke-PnPSiteTemplate -Path $FilePnPSiteTemplate -Verbose -Connection $currentSiteConn -ErrorAction Stop
 
@@ -55,7 +59,7 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
     
     ForEach ($File in $Files)
     {
-        Write-host "Uploading $($File.Directory)\$($File.Name)"
+        Write-host "Uploading $($File.Directory)\$($File.Name)" -ForegroundColor Yellow
   
         #Upload o arquivo e preenche o campo Title
         Add-PnPFile -Path "$($File.Directory)\$($File.Name)" -Folder $ServerRelativePath -Values @{"Title" = $($File.Name)} -Connection $currentSiteConn -ErrorAction Stop
@@ -64,7 +68,7 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
     Add-PnPFolder -Name "Training Catalog" -Folder "$($RelativeUrl)/Viva Learning Catalog" -ErrorAction Stop
 
     # Adiciona a permissão do Grupo do M365 a pasta do repositório de conteúdo global
-    Set-PnPFolderPermission -List 'Viva Learning Catalog' -Identity 'Viva Learning Catalog/Training Catalog' -User $LDContributors -AddRole 'Read'
+    Set-PnPFolderPermission -List 'Viva Learning Catalog' -Identity 'Viva Learning Catalog/Training Catalog' -User $LDContributors -AddRole 'Leitura'
 
     Write-host "Criação do site criado com sucesso!!" -ForeGroundColor Green
     Write-host "Utilize o site criado para configurar no Viva Learning: $($SiteURL)" -ForeGroundColor Green
