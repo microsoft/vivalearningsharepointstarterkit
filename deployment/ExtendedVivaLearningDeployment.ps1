@@ -68,7 +68,7 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
     Add-PnPFolder -Name "Training Catalog" -Folder "$($RelativeUrl)/Viva Learning Catalog" -ErrorAction Stop
 
     # Adiciona a permissão do Grupo do M365 a pasta do repositório de conteúdo global
-    Set-PnPFolderPermission -List 'Viva Learning Catalog' -Identity 'Viva Learning Catalog/Training Catalog' -User $LDContributors -AddRole 'Leitura'
+    Set-PnPFolderPermission -List 'Viva Learning Catalog' -Identity 'Viva Learning Catalog/Training Catalog' -User $LDContributors -AddRole 'Read'
     
     Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "appL"; "configurationvalue" = "please insert GUID value"}
     Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "templateInstanceId"; "configurationvalue" = "please insert GUID value"}
@@ -83,8 +83,9 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
     
   }
   catch [System.Net.WebException], [System.IO.IOException] {
-   
+    $message = $_
     Write-host "Unable to apply template to $($SiteURL)" -ForeGroundColor Red
+    Write-host $message -ForeGroundColor Red
 
   }
 
