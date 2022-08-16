@@ -69,6 +69,14 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
 
     # Adiciona a permissão do Grupo do M365 a pasta do repositório de conteúdo global
     Set-PnPFolderPermission -List 'Viva Learning Catalog' -Identity 'Viva Learning Catalog/Training Catalog' -User $LDContributors -AddRole 'Leitura'
+    
+    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "appL"; "configurationvalue" = "please insert GUID value"}
+    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "templateInstanceId"; "configurationvalue" = "please insert GUID value"}
+    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "environment"; "configurationvalue" = "please insert GUID value"}
+    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "approvers"; "configurationvalue" = "please insert emails separated with semicolon"}
+    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "vivalearningURL"; "configurationvalue" = "https://teams.microsoft.com/l/entity/2e3a628d-6f54-4100-9e7a-f00bc3621a85/2e3a628d-6f54-4100-9e7a-f00bc3621a85"}
+    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "vivalearningURL"; "configurationvalue" = "https://teams.microsoft.com/l/entity/[APPID]/[APPID]"}
+
 
     Write-host "Criação do site criado com sucesso!!" -ForeGroundColor Green
     Write-host "Utilize o site criado para configurar no Viva Learning: $($SiteURL)" -ForeGroundColor Green
