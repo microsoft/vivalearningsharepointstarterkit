@@ -82,6 +82,9 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
     Set-PnPList -Identity "Documents" -Hidden $true
     Set-PnPList -Identity "Form Templates" -Hidden $true
 
+    #Importa os Termos no Site para ser utilizado na Coluna SkillTags
+    $termgroup = Get-PnPSiteCollectionTermStore | Select-Object Name
+    Import-PnPTermSet -GroupName $termgroup.Name -Path '.\termsetSkillTags.csv' -IsOpen $true -Contact $Owner -Owner $Owner
     Write-host "Criação do site criado com sucesso!!" -ForeGroundColor Green
     Write-host "Utilize o site criado para configurar no Viva Learning: $($SiteURL)" -ForeGroundColor Green
     
