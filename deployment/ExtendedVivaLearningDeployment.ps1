@@ -83,6 +83,7 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
     $objField.Hidden = $true
     $objField.Update()
     Invoke-PnPQuery
+    
 
     #Oculta library não utilizadas pela solução
     Set-PnPList -Identity "Documents" -Hidden $true
