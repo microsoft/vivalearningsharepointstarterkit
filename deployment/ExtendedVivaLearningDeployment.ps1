@@ -83,7 +83,7 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
     $objField.Required = $false
     $objField.Hidden = $true
     $objField.Update()
-    Invoke-PnPQuery
+    Invoke-PnPQuery -Connection $currentSiteConn
 
 
     #Oculta library não utilizadas pela solução
