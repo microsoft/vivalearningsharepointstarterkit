@@ -43,7 +43,7 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
     #Criação de Site - Certifique-se de antes executar o campo SiteUrl não contenha espaço ou caracteres especiais
     Write-host "Criando o site $($SiteURL) ..." -ForeGroundColor Yellow
 
-    New-PnPTenantSite -Title "Descubra, compartilhe e priorize o aprendizado" -Url $SiteURL -Lcid 1046 -TimeZone 8 -Template "SITEPAGEPUBLISHING#0" -Owner $Owner -Wait -Connection $adminconn -ErrorAction Stop
+    New-PnPTenantSite -Title "Descubra, compartilhe e priorize o aprendizado" -Url $SiteURL -Lcid 1033 -TimeZone 8 -Template "SITEPAGEPUBLISHING#0" -Owner $Owner -Wait -Connection $adminconn -ErrorAction Stop
     
     $currentsite = $SiteURL
     $currentSiteConn = Connect-PnPOnline $currentsite -Interactive -ReturnConnection
@@ -65,33 +65,34 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
         Add-PnPFile -Path "$($File.Directory)\$($File.Name)" -Folder $ServerRelativePath -Values @{"Title" = $($File.Name)} -Connection $currentSiteConn -ErrorAction Stop
     }
     #Cria a pasta do repositório de conteúdo global
-    Add-PnPFolder -Name "Training Catalog" -Folder "$($RelativeUrl)/Viva Learning Catalog" -ErrorAction Stop
+    Add-PnPFolder -Name "Training Catalog" -Folder "$($RelativeUrl)/Viva Learning Catalog" -ErrorAction Stop -Connection $currentSiteConn
 
     # Adiciona a permissão do Grupo do M365 a pasta do repositório de conteúdo global
-    Set-PnPFolderPermission -List 'Viva Learning Catalog' -Identity 'Viva Learning Catalog/Training Catalog' -User $LDContributors -AddRole 'Read'
+    Set-PnPFolderPermission -List 'Viva Learning Catalog' -Identity 'Viva Learning Catalog/Training Catalog' -User $LDContributors -AddRole 'Read' -Connection $currentSiteConn
     
     # Cria os registros de configurações
-    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "appL"; "configurationvalue" = "ba1cabe6-dfd2-4334-96c0-0dcdf86e18e5"}
-    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "templateInstanceId"; "configurationvalue" = "please insert GUID value"}
-    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "environment"; "configurationvalue" = "please insert GUID value"}
-    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "approvers"; "configurationvalue" = "please insert emails separated with semicolon"}
-    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "vivalearningURL"; "configurationvalue" = "https://teams.microsoft.com/l/entity/2e3a628d-6f54-4100-9e7a-f00bc3621a85/2e3a628d-6f54-4100-9e7a-f00bc3621a85"}
-    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "appDeepLinkID"; "configurationvalue" = "https://teams.microsoft.com/l/entity/[APPID]/[APPID]"}
+    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "appL"; "configurationvalue" = "ba1cabe6-dfd2-4334-96c0-0dcdf86e18e5"} -Connection $currentSiteConn
+    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "templateInstanceId"; "configurationvalue" = "please insert GUID value"} -Connection $currentSiteConn
+    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "environment"; "configurationvalue" = "please insert GUID value"} -Connection $currentSiteConn
+    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "approvers"; "configurationvalue" = "please insert emails separated with semicolon"} -Connection $currentSiteConn
+    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "vivalearningURL"; "configurationvalue" = "https://teams.microsoft.com/l/entity/2e3a628d-6f54-4100-9e7a-f00bc3621a85/2e3a628d-6f54-4100-9e7a-f00bc3621a85"} -Connection $currentSiteConn
+    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "appDeepLinkID"; "configurationvalue" = "https://teams.microsoft.com/l/entity/[APPID]/[APPID]"} -Connection $currentSiteConn
+    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "supportedExtensions"; "configurationvalue" = "pdf;mov;mp4;avi;m4a;ppt;pptx;doc;docx;xls;xlsx"} -Connection $currentSiteConn
     
-    $objField = Get-PnPField -List "Learning App Settings" -Identity "Title"
+    $objField = Get-PnPField -List "Learning App Settings" -Identity "Title" -Connection $currentSiteConn
     $objField.Required = $false
     $objField.Hidden = $true
     $objField.Update()
     Invoke-PnPQuery
-    
+
 
     #Oculta library não utilizadas pela solução
-    Set-PnPList -Identity "Documents" -Hidden $true
-    Set-PnPList -Identity "Form Templates" -Hidden $true
+    Set-PnPList -Identity "Documents" -Hidden $true -Connection $currentSiteConn
+    Set-PnPList -Identity "Form Templates" -Hidden $true -Connection $currentSiteConn
 
     #Importa os Termos no Site para ser utilizado na Coluna SkillTags
-    $termgroup = Get-PnPSiteCollectionTermStore | Select-Object Name
-    Import-PnPTermSet -GroupName $termgroup.Name -Path '.\termsetSkillTags.csv' -IsOpen $true -Contact $Owner -Owner $Owner
+    $termgroup = Get-PnPSiteCollectionTermStore -Connection $currentSiteConn | Select-Object Name 
+    Import-PnPTermSet -GroupName $termgroup.Name -Path '.\termsetSkillTags.csv' -IsOpen $true -Contact $Owner -Owner $Owner -Connection $currentSiteConn
     
     Write-host "Criação do site criado com sucesso!!" -ForeGroundColor Green
     Write-host "Utilize o site criado para configurar no Viva Learning: $($SiteURL)" -ForeGroundColor Green
