@@ -7,7 +7,9 @@ Param(
     [Parameter(Mandatory = $true, HelpMessage = "Type e-mail SPO Admin", Position = 2)][ValidateNotNull()]
     [string]$Owner,
     [Parameter(Mandatory = $true, HelpMessage = "Type L&D Contributors e-mail M365 Group", Position = 3)][ValidateNotNull()]
-    [string]$LDContributors
+    [string]$LDContributors,
+    [Parameter(Mandatory = $true, HelpMessage = "Type L&D Approvers separeted with semicolon", Position = 4)][ValidateNotNull()]
+    [string]$LDApprovers
 )
 #Exemplos:
 <#
@@ -22,7 +24,19 @@ $SiteURL = "https://$($tenantname).sharepoint.com" + $RelativeUrl
 $FilePnPSiteTemplate = ".\templateVivaLearningExtendedSolutionV1_1.pnp"
 $FilesPath = ".\Thumbnails"
 $ServerRelativePath = "$($RelativeUrl)/vivalearningthumbnails"
-
+$userEmail = $Owner
+$CamlQuery = @"
+<View>
+    <Query>
+        <Where>
+            <Eq>
+                <FieldRef Name='EMail' />
+                <Value Type='Text'>$userEmail</Value>
+            </Eq>
+        </Where>
+    </Query>
+</View>
+"@
 
 #Conexão com o Admin Center do SharePoint Online
 If(![string]::IsNullOrWhiteSpace($TenantName)){
@@ -49,7 +63,7 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
     $currentSiteConn = Connect-PnPOnline $currentsite -Interactive -ReturnConnection
 
     Write-host "Aplicando o modelo de site..." -ForeGroundColor Yellow
-    Start-Sleep -Seconds 60
+    Start-Sleep -Seconds 30
     Invoke-PnPSiteTemplate -Path $FilePnPSiteTemplate -Verbose -Connection $currentSiteConn -ErrorAction Stop
 
     #Obtem todos os thumbnails na folder espefíficada
@@ -68,13 +82,22 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
     Add-PnPFolder -Name "Training Catalog" -Folder "$($RelativeUrl)/Viva Learning Catalog" -ErrorAction Stop -Connection $currentSiteConn
 
     # Adiciona a permissão do Grupo do M365 a pasta do repositório de conteúdo global
-    Set-PnPFolderPermission -List 'Viva Learning Catalog' -Identity 'Viva Learning Catalog/Training Catalog' -User $LDContributors -AddRole 'Read' -Connection $currentSiteConn
+    $userprofile = Get-PnPListItem -List /_catalogs/users -Query $CamlQuery -Connection $currentSiteConn
+
+    if($userprofile["MUILanguages"] -eq "pt-BR"){
+        Set-PnPFolderPermission -List 'Viva Learning Catalog' -Identity 'Viva Learning Catalog/Training Catalog' -User $LDContributors -AddRole 'Leitura' -Connection $currentSiteConn
+        Write-host "Permission granted successfully..." -ForegroundColor Yellow
+    }else{
+        Set-PnPFolderPermission -List 'Viva Learning Catalog' -Identity 'Viva Learning Catalog/Training Catalog' -User $LDContributors -AddRole 'Read' -Connection $currentSiteConn
+        Write-host "Permission granted successfully..." -ForegroundColor Yellow
+    }
+    
     
     # Cria os registros de configurações
     Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "appL"; "configurationvalue" = "ba1cabe6-dfd2-4334-96c0-0dcdf86e18e5"} -Connection $currentSiteConn
     Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "templateInstanceId"; "configurationvalue" = "please insert GUID value"} -Connection $currentSiteConn
     Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "environment"; "configurationvalue" = "please insert GUID value"} -Connection $currentSiteConn
-    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "approvers"; "configurationvalue" = "please insert emails separated with semicolon"} -Connection $currentSiteConn
+    Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "approvers"; "configurationvalue" = $LDApprovers} -Connection $currentSiteConn
     Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "vivalearningURL"; "configurationvalue" = "https://teams.microsoft.com/l/entity/2e3a628d-6f54-4100-9e7a-f00bc3621a85/2e3a628d-6f54-4100-9e7a-f00bc3621a85"} -Connection $currentSiteConn
     Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "appDeepLinkID"; "configurationvalue" = "https://teams.microsoft.com/l/entity/[APPID]/[APPID]"} -Connection $currentSiteConn
     Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "supportedExtensions"; "configurationvalue" = "pdf;mov;mp4;avi;m4a;ppt;pptx;doc;docx;xls;xlsx"} -Connection $currentSiteConn
