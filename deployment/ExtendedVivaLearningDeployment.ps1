@@ -11,17 +11,11 @@ Param(
     [Parameter(Mandatory = $true, HelpMessage = "Type L&D Approvers separeted with semicolon", Position = 4)][ValidateNotNull()]
     [string]$LDApprovers
 )
-#Exemplos:
-<#
-$RelativeUrl = "/sites/devtest4"
-$Owner = "admin@M365x66999889.onmicrosoft.com"
-$TenantName = "M365x66999889"
-$LDContributors = "contentrepositoryaccess@M365x66999889.onmicrosoft.com"
-#>
+
 #Variáveis globais:
-$AdminCenterURL = "https://$($TenantName)-admin.sharepoint.com"
+#$AdminCenterURL = "https://$($TenantName)-admin.sharepoint.com"
 $SiteURL = "https://$($tenantname).sharepoint.com" + $RelativeUrl
-$FilePnPSiteTemplate = ".\templateVivaLearningExtendedSolutionV1_1.pnp"
+$FilePnPSiteTemplate = ".\templateVivaLearningExtendedSolutionV1_2.pnp"
 $FilesPath = ".\Thumbnails"
 $ServerRelativePath = "$($RelativeUrl)/vivalearningthumbnails"
 $userEmail = $Owner
@@ -38,32 +32,15 @@ $CamlQuery = @"
 </View>
 "@
 
-#Conexão com o Admin Center do SharePoint Online
-If(![string]::IsNullOrWhiteSpace($TenantName)){
-    
-    $adminconn = Connect-PnPOnline $AdminCenterURL -Interactive -ReturnConnection  -ErrorAction Stop  
-
-}Else{
-    
-    Write-host "Paramêtro TenantName vazio, por favor preencha o parametro com o valor apropriado. Lembre-se de preencher sem espaço e sem caracteres especiais." -ForeGroundColor Red
-    exit
-
-}
-
-If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Owner) -Or ![string]::IsNullOrWhiteSpace($LDContributors)){
+If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Owner) -Or ![string]::IsNullOrWhiteSpace($LDContributors) -Or ![string]::IsNullOrWhiteSpace($TenantName)){
     
     try {
-    
-    #Criação de Site - Certifique-se de antes executar o campo SiteUrl não contenha espaço ou caracteres especiais
-    Write-host "Criando o site $($SiteURL) ..." -ForeGroundColor Yellow
-
-    New-PnPTenantSite -Title "Descubra, compartilhe e priorize o aprendizado" -Url $SiteURL -Lcid 1033 -TimeZone 8 -Template "SITEPAGEPUBLISHING#0" -Owner $Owner -Wait -Connection $adminconn -ErrorAction Stop
     
     $currentsite = $SiteURL
     $currentSiteConn = Connect-PnPOnline $currentsite -Interactive -ReturnConnection
 
     Write-host "Aplicando o modelo de site..." -ForeGroundColor Yellow
-    Start-Sleep -Seconds 30
+    #Start-Sleep -Seconds 30
     Invoke-PnPSiteTemplate -Path $FilePnPSiteTemplate -Verbose -Connection $currentSiteConn -ErrorAction Stop
 
     #Obtem todos os thumbnails na folder espefíficada
@@ -102,12 +79,30 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
     Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "appDeepLinkID"; "configurationvalue" = "https://teams.microsoft.com/l/entity/[APPID]/[APPID]"} -Connection $currentSiteConn
     Add-PnPListItem -List "Learning App Settings" -Values @{"configurationname" = "supportedExtensions"; "configurationvalue" = "pdf;mov;mp4;avi;m4a;ppt;pptx;doc;docx;xls;xlsx"} -Connection $currentSiteConn
     
-    $objField = Get-PnPField -List "Learning App Settings" -Identity "Title" -Connection $currentSiteConn
-    $objField.Required = $false
-    $objField.Hidden = $true
-    $objField.Update()
-    Invoke-PnPQuery -Connection $currentSiteConn
+    # Oculta o campo Title e remove obrigatoriedade
+    $objFieldTitle = Get-PnPField -List "Learning App Settings" -Identity "Title" -Connection $currentSiteConn
+    $objFieldTitle.Required = $false
+    $objFieldTitle.Hidden = $true
+    $objFieldTitle.Update()
+    
+    #Renomeia os campos Created By e Created
+    $objFieldCtb1 = Get-PnPField -List "Viva%20Learning%20Approval" -Identity "Author" -Connection $currentSiteConn -ErrorAction Stop
+    $objFieldCtb1.Title = "LDCreatedBy"
+    $objFieldCtb1.Update()
+   
+    $objFieldCtd1 = Get-PnPField -List "Viva%20Learning%20Approval" -Identity "Created" -Connection $currentSiteConn -ErrorAction Stop
+    $objFieldCtd1.Title = "LDCreated"
+    $objFieldCtd1.Update()
 
+    $objFieldCtb2 = Get-PnPField -List "Viva%20Learning%20Catalog" -Identity "Author" -Connection $currentSiteConn -ErrorAction Stop
+    $objFieldCtb2.Title = "LDCreatedBy"
+    $objFieldCtb2.Update()
+
+    $objFieldCtd2 = Get-PnPField -List "Viva%20Learning%20Catalog" -Identity "Created" -Connection $currentSiteConn -ErrorAction Stop
+    $objFieldCtd2.Title = "LDCreated"
+    $objFieldCtd2.Update()
+    
+    Invoke-PnPQuery -Connection $currentSiteConn -ErrorAction Stop
 
     #Oculta library não utilizadas pela solução
     Set-PnPList -Identity "Documents" -Hidden $true -Connection $currentSiteConn
@@ -115,10 +110,10 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
 
     #Importa os Termos no Site para ser utilizado na Coluna SkillTags
     $termgroup = Get-PnPSiteCollectionTermStore -Connection $currentSiteConn | Select-Object Name 
-    Import-PnPTermSet -GroupName $termgroup.Name -Path '.\termsetSkillTags.csv' -IsOpen $true -Contact $Owner -Owner $Owner -Connection $currentSiteConn
+    Import-PnPTermSet -GroupName $termgroup.Name -Path '.\termsetSkillTags.csv' -IsOpen $true -Contact $Owner -Owner $Owner -Connection $currentSiteConn -ErrorAction Stop
     
-    Write-host "Criação do site criado com sucesso!!" -ForeGroundColor Green
-    Write-host "Utilize o site criado para configurar no Viva Learning: $($SiteURL)" -ForeGroundColor Green
+    Write-host "Criação configurado com sucesso!!" -ForeGroundColor Green
+    
     
   }
   catch [System.Net.WebException], [System.IO.IOException] {
