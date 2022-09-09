@@ -63,9 +63,15 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
 
     if($userprofile["MUILanguages"] -eq "pt-BR"){
         Set-PnPFolderPermission -List 'Viva Learning Catalog' -Identity 'Viva Learning Catalog/Training Catalog' -User $LDContributors -AddRole 'Leitura' -Connection $currentSiteConn
+        #Adiciona a pasta na lista do Viva Learning
+        Add-PnPListItem -List "Learning App Content Repository" -Values @{"Title" = "Viva Learning Catalog"; "FolderUrl" = "$($currentsite)/Viva Learning Catalog/Training Catalog"} -Connection $currentSiteConn
+
         Write-host "Permission granted successfully..." -ForegroundColor Yellow
     }else{
         Set-PnPFolderPermission -List 'Viva Learning Catalog' -Identity 'Viva Learning Catalog/Training Catalog' -User $LDContributors -AddRole 'Read' -Connection $currentSiteConn
+        #Adiciona a pasta na lista do Viva Learning
+        Add-PnPListItem -List "Learning App Content Repository" -Values @{"Title" = "Viva Learning Catalog"; "FolderUrl" = "$($currentsite)/Viva Learning Catalog/Training Catalog"} -Connection $currentSiteConn 
+       
         Write-host "Permission granted successfully..." -ForegroundColor Yellow
     }
     
@@ -112,7 +118,7 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
     $termgroup = Get-PnPSiteCollectionTermStore -Connection $currentSiteConn | Select-Object Name 
     Import-PnPTermSet -GroupName $termgroup.Name -Path '.\termsetSkillTags.csv' -IsOpen $true -Contact $Owner -Owner $Owner -Connection $currentSiteConn -ErrorAction Stop
     
-    Write-host "Criação configurado com sucesso!!" -ForeGroundColor Green
+    Write-host "Site configurado com sucesso!!" -ForeGroundColor Green
     
     
   }
