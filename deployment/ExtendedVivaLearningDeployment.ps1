@@ -1,4 +1,4 @@
-﻿#Receber Parâmetros
+#Receber Parâmetros
 Param(
     [Parameter(Mandatory = $true, HelpMessage = "Relative Site URL Ex: /sites/sitename or /teams/sitename", Position = 0)][ValidateNotNull()]
     [string]$RelativeUrl,
