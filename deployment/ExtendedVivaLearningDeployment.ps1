@@ -138,6 +138,7 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
 }Else{
     
     Write-host "Por Favor preencha os parâmetros obrigatórios antes de executar este script" -ForeGroundColor Red
+    
     exit
 
 }
