@@ -15,7 +15,7 @@ Param(
 #Variáveis globais:
 #$AdminCenterURL = "https://$($TenantName)-admin.sharepoint.com"
 $SiteURL = "https://$($tenantname).sharepoint.com" + $RelativeUrl
-$FilePnPSiteTemplate = ".\templateVivaLearningExtendedSolutionV1_2.pnp"
+$FilePnPSiteTemplate = ".\templateVivaLearningExtendedSolutionV1_3.pnp"
 $FilesPath = ".\Thumbnails"
 $ServerRelativePath = "$($RelativeUrl)/vivalearningthumbnails"
 $userEmail = $Owner
