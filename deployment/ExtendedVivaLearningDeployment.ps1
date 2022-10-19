@@ -117,7 +117,11 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
     #Importa os Termos no Site para ser utilizado na Coluna SkillTags
     $termgroup = Get-PnPSiteCollectionTermStore -Connection $currentSiteConn | Select-Object Name 
     Import-PnPTermSet -GroupName $termgroup.Name -Path '.\termsetSkillTags.csv' -IsOpen $true -Contact $Owner -Owner $Owner -Connection $currentSiteConn -ErrorAction Stop
-    
+    $SkillTagsTermId = (get-pnptermset -Identity "SkillTags" -TermGroup (Get-PnPSiteCollectionTermStore -Connection $currentSiteConn).Name -Connection $currentSiteConn).Id 
+    Remove-PnPField -List "Viva Learning Catalog" -Identity "SkillTags" -Force -Connection $currentSiteConn
+    Remove-PnPField -List "Viva Learning Approval" -Identity "SkillTags" -Force -Connection $currentSiteConn
+    Add-PnPTaxonomyField -DisplayName "SkillTags" -InternalName "SkillTags" -TaxonomyItemId $SkillTagsTermId.Guid -List "Viva Learning Catalog" -AddToDefaultView -Connection $currentSiteConn
+    Add-PnPTaxonomyField -DisplayName "SkillTags" -InternalName "SkillTags" -TaxonomyItemId $SkillTagsTermId.Guid -List "Viva Learning Approval" -AddToDefaultView -Connection $currentSiteConn
     Write-host "Site configurado com sucesso!!" -ForeGroundColor Green
     
     
