@@ -62,15 +62,15 @@ If(![string]::IsNullOrWhiteSpace($SiteURL) -Or ![string]::IsNullOrWhiteSpace($Ow
     $userprofile = Get-PnPListItem -List /_catalogs/users -Query $CamlQuery -Connection $currentSiteConn
 
     if($userprofile["MUILanguages"] -eq "pt-BR"){
-        Set-PnPFolderPermission -List 'Viva Learning Catalog' -Identity 'Viva Learning Catalog/Training Catalog' -User $LDContributors -AddRole 'Leitura' -Connection $currentSiteConn
+        Set-PnPFolderPermission -List 'Viva Learning Catalog' -Identity 'Viva Learning Catalog/Training Catalog' -User $LDContributors -AddRole 'Leitura' -Connection $currentSiteConn -ErrorAction Stop
         #Adiciona a pasta na lista do Viva Learning
-        Add-PnPListItem -List "Learning App Content Repository" -Values @{"Title" = "Viva Learning Catalog"; "FolderUrl" = "$($currentsite)/Viva Learning Catalog/Training Catalog"} -Connection $currentSiteConn
+        Add-PnPListItem -List "Learning App Content Repository" -Values @{"Title" = "Viva Learning Catalog"; "FolderUrl" = "$($currentsite)/Viva Learning Catalog/Training Catalog"} -Connection $currentSiteConn -ErrorAction Stop
 
         Write-host "Permission granted successfully..." -ForegroundColor Yellow
     }else{
-        Set-PnPFolderPermission -List 'Viva Learning Catalog' -Identity 'Viva Learning Catalog/Training Catalog' -User $LDContributors -AddRole 'Read' -Connection $currentSiteConn
+        Set-PnPFolderPermission -List 'Viva Learning Catalog' -Identity 'Viva Learning Catalog/Training Catalog' -User $LDContributors -AddRole 'Read' -Connection $currentSiteConn -ErrorAction Stop
         #Adiciona a pasta na lista do Viva Learning
-        Add-PnPListItem -List "Learning App Content Repository" -Values @{"Title" = "Viva Learning Catalog"; "FolderUrl" = "$($currentsite)/Viva Learning Catalog/Training Catalog"} -Connection $currentSiteConn 
+        Add-PnPListItem -List "Learning App Content Repository" -Values @{"Title" = "Viva Learning Catalog"; "FolderUrl" = "$($currentsite)/Viva Learning Catalog/Training Catalog"} -Connection $currentSiteConn -ErrorAction Stop
        
         Write-host "Permission granted successfully..." -ForegroundColor Yellow
     }
