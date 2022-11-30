@@ -8,7 +8,7 @@ A aplicativo fornece uma interface simples para organizar os conteúdos do Viva 
 
 **Atenção:** estes recursos de implementação são destinados a profissionais de TI com experiência em SharePoint.
 
-![Tela principal do Vival Learning SharePoint Starter Kit](./deployment/assets/images/userInterface-01.png)
+![Tela principal do Vival Learning SharePoint Starter Kit](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/images/solutionOverview.png)
 
 ## Recursos principais
 
