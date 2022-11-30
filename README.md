@@ -2,12 +2,11 @@
 
 [Visão Geral](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/) | [Arquitetura](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/1.-Arquitetura) | [Guia de instalação](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/2.-Guia-de-Instala%C3%A7%C3%A3o) | [Usando a solução](https://github.com/microsoft/vivalearningsharepointstarterkit/wiki/3.-Usando-a-Solu%C3%A7%C3%A3o)
 
-O Viva Learning SharePoint Starter Kit é um aplicativo customizado desenvolvido usando a Power Platform juntamente com um modelo de site de SharePoint permitindo aos colaboradores da organização sugerirem seus próprios conteúdos de treinamento com a finalidade de agregar valor à organização, adotar o Viva Learning com conteúdo baseado em SharePoint, compartilhar conhecimento e integrar as áreas.
+O Viva Learning SharePoint Starter Kit é um aplicativo customizado desenvolvido usando a Power Platform que faz uso de um site no SharePoint Online permitindo aos colaboradores da organização sugerirem seus próprios conteúdos de treinamento com a finalidade de agregar valor à organização, acelerar a adoção do conteúdo baseado em SharePoint, compartilhar conhecimento e integrar as áreas.
 
-A aplicativo fornece uma interface simples para organizar os conteúdos do Viva Learning provenientes do SharePoint.
-O Viva Learning SharePoint Starter Kit provê a aprovação do conteúdo antes de ser publicado dentro da biblioteca de catálogo da organização, posteriormente estando disponível no Viva Learning.
+A aplicativo fornece uma interface simples para organizar os conteúdos do Viva Learning provenientes do SharePoint. O Viva Learning SharePoint Starter Kit provê a aprovação do conteúdo antes de serem publicados dentro da biblioteca de catálogo da organização, posteriormente estando disponível no Viva Learning.
 
-**Atenção:** estes recursos de implementação são destinados a profissionais de TI com esperiência em SharePoint.
+**Atenção:** estes recursos de implementação são destinados a profissionais de TI com experiência em SharePoint.
 
 ![Tela principal do Vival Learning SharePoint Starter Kit](./deployment/assets/images/userInterface-01.png)
 
